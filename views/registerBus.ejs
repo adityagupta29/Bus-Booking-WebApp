@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bus Book</title>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+	<nav>
+		<p class="brand">Bus Service</p>
+
+		<a class="nav-btn" href="/submit">Login</a>
+	</nav>
+
+	<div class="register-bus-main">
+		<p class="section-heading">Register Bus</p>
+
+	<div class="register-bus">
+		<form action="/dashboard" method="post">
+			<div class="row">
+				<div class="col-md-6 col-lg-6 col-12">
+					<input name="number" type="text" placeholder="Bus Number">
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input name="type" type="text" placeholder="AC OR NON AC">
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input name="from" type="text" placeholder="Location you can pick from">
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input name="to" type="text" placeholder="Location you can drop to">
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input name="hourlyRate" type="text" placeholder="Hourly Rate" style="width: 50%;">
+					<span>₹/km</span>
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input name="bookingRate" type="text" placeholder="Booking Rate" style="width: 50%;">
+					<span>₹/day</span>
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input value="demo" name="busProvider" type="text" style="display: none;">
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input value="<%= username %>" name="busProviderEmail" type="text" style="display: none;">
+				</div>
+				<div class="col-md-6 col-lg-6 col-12">
+					<input value="<%= agencyname %>" name="name" type="text" style="display: none;">
+				</div>
+			</div>
+			<button>Register</button>
+		</form>
+	</div>
+	<br>
+	<br>
+	<p class="section-heading">List of Booked Bus</p>
+	<style>
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+	  
+		td,
+		th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+	  
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+	  
+	  </style>
+		<table>
+		  <tr>
+			<th>Bus Number</th>
+			<th>Location</th>
+			<th>Name</th>
+			<th>Number</th>
+			<th>Date</th>
+			<th>Time</th>
+		  </tr>
+
+		  <% data.forEach(element => { %>
+		  <tr>
+			<td><%= element.busNumber %></td>
+			<td><%= element.pickupLocation %><i class="bi bi-arrow-right-circle"></i><%= element.dropLocation %></td>
+			<td><%= element.name %></td>
+			<td><%= element.contact %></td>
+			<td><%= element.date %></td>
+			<td><%= element.time %></td>
+		  </tr>
+		  <% }) %>
+
+		</table>
+	</div>
+</body>
+
+</html>
